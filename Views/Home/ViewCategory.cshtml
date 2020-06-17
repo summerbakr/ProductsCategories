@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+</head>
+<body>
+    <h1>@ViewBag.DisplayCategory.CategoryName</h1>
+    <h3>Products</h3>
+    @foreach (Association p in @ViewBag.CategoryWithProducts.CategoryProducts)
+    {
+        <p>@p.Product.Name</p>
+    }
+
+     <form method="post" action="/addcategoryproduct/@ViewBag.DisplayCategory.CategoryId">
+       <select name="CategoryId" class="form-control">
+            @foreach(Product p in ViewBag.AllProducts)
+            {
+                <option value="@p.ProductId">@p.Name</option>
+            }
+        </select>
+        <input type="Submit" value="Add Product to Category"/>
+   </form>
+    
+</body>
+</html>

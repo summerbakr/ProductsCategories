@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+</head>
+<body>
+    @model Category
+    <h1><a href="/">Products</a>|<a href="/categories">Categories</a></h1>
+    <h3>Add New Category</h3>
+    <form method="post" action="processnewcategory">
+        <p><input asp-for="CategoryName"></p>
+        <p><span asp-validation-for="CategoryName"></span></p>
+
+        <input type="Submit" value="Create Category"/>
+
+    </form>
+
+    <h3>Existing Categories</h3>
+    @foreach(Category c in @ViewBag.AllCategories)
+    {
+        <p><a href="/categories/@c.CategoryId">@c.CategoryName</a></p>
+    }
+    
+</body>
+</html>
